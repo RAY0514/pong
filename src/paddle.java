@@ -2,7 +2,6 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 
 public class paddle extends Rectangle {
-
     int id;
     int yVelocity;//移動速度
     int speed = 10;
@@ -70,24 +69,17 @@ public class paddle extends Rectangle {
 
         public void setYDirection ( int yDirection){
         yVelocity=yDirection;
-
         }
+
         public void move () {
         y=y+yVelocity;
-
         }
+
         public void draw (Graphics g){
         if (id==1)
             g.setColor(Color.blue);
-
         else
             g.setColor(Color.red);
             g.fillRect(x,y,width,height);
-
-
-
-
         }
-
-
 }

@@ -15,7 +15,6 @@ public class GamePanel extends JPanel implements Runnable{
     static final  int GAME_HEIGHT = (int) (GAME_WIDTH * (0.5555));//複製現實的桌球桌比例
     static  final Dimension SCREEN_SIZE=new Dimension(GAME_WIDTH,GAME_HEIGHT);
     static final int BALL_DIAMETER = 20;//球的大小
-
     static final int PADDLE_WIDTH=25;
     static final int PADDLE_HEIGHT=100;
     Thread gameThread;
@@ -27,12 +26,6 @@ public class GamePanel extends JPanel implements Runnable{
     Ball ball;
     Score score ;
 
-
-
-
-
-
-
     GamePanel(){
         newPaddlse();
         newBall();
@@ -40,12 +33,11 @@ public class GamePanel extends JPanel implements Runnable{
         this.setFocusable(true);
         this.addKeyListener(new AL());
         this.setPreferredSize(SCREEN_SIZE);
-
         gameThread=new Thread(this);
         gameThread.start();
 
-
     }
+
     public void newBall(){
         random = new Random();
         ball = new Ball((GAME_WIDTH/2)-(BALL_DIAMETER/2),random.nextInt(GAME_HEIGHT-BALL_DIAMETER),BALL_DIAMETER,BALL_DIAMETER);
@@ -135,10 +127,9 @@ public class GamePanel extends JPanel implements Runnable{
             newBall();
             System.out.println("play1 score:"+score.play1);
         }
-
     }
-    public void run(){
 
+    public void run(){
         //game loop
         long lastime = System.nanoTime();//用來獲取表徵當前時間的數值
         double amountofTicks = 60.0;
@@ -158,31 +149,21 @@ public class GamePanel extends JPanel implements Runnable{
                 checkCollision();
                 repaint();
                 delta--;
-
             }
-
-
-
         }
-
-
-
-
     }
+
     public class AL extends KeyAdapter {
         public  void keyPressed(KeyEvent e){
             paddle1.keyPressed(e);
             paddle2.keyPressed(e);
 
         }
-
         public  void keyReleased(KeyEvent e){
             paddle1.keyReleased(e);
             paddle2.keyReleased(e);
-
         }
     }
-
 }
 
 
